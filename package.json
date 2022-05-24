@@ -1,0 +1,26 @@
+{
+  "name": "pixi-test-zombie-pixijs",
+  "version": "1.0.0",
+  "description": "Pixi.js test Zombie spike",
+  "main": "index.js",
+  "scripts": {
+    "start": "snowpack dev --polyfill-node",
+    "build": "snowpack build --polyfill-node",
+    "init": "snowpack init"
+  },
+  "keywords": [
+    "snowpack",
+    "pixi.js",
+    "victor",
+    "matter.js"
+  ],
+  "author": "scrodrig",
+  "devDependencies": {
+    "snowpack": "^3.0.11"
+  },
+  "dependencies": {
+    "matter-js": "^0.15.0",
+    "pixi.js": "^5.3.7",
+    "victor": "^1.1.0"
+  }
+}
