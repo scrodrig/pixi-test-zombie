@@ -1,20 +1,15 @@
 {
-  "name": "pixi-test-zombie-pixijs",
+  "name": "pixi-test-zombie",
   "version": "1.0.0",
-  "description": "Pixi.js test Zombie spike",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "snowpack dev --polyfill-node",
     "build": "snowpack build --polyfill-node",
     "init": "snowpack init"
   },
-  "keywords": [
-    "snowpack",
-    "pixi.js",
-    "victor",
-    "matter.js"
-  ],
-  "author": "scrodrig",
+  "keywords": [],
+  "license": "ISC",
   "devDependencies": {
     "snowpack": "^3.0.11"
   },
