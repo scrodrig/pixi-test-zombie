@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 
 import Player from './player/Player'
+import Spawner from './enemy/Spawner'
 import Zombie from './enemy/Zombie'
 
 let canvasSize = 900
@@ -13,8 +14,9 @@ const app = new PIXI.Application({
 })
 
 let player = new Player({ app })
-let zombie = new Zombie({ app, player })
+let zSpawner = new Spawner({ create: () => new Zombie({ app, player }) })
 app.ticker.add(delta => {
     player.update()
-    zombie.update()
+    console.log('L', zSpawner.spawns)
+    zSpawner.spawns.forEach(zombie => zombie.update())
 })
