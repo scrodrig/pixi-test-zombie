@@ -12,6 +12,14 @@ export default class Player {
         app.stage.addChild(this.player)
     }
 
+    get width(){
+        return this.player.width
+    }
+
+    get position(){
+        return this.player.position
+    }
+
     update() {
         const cursorPosition = this.app.renderer.plugins.interaction.mouse.global
         const angle =
