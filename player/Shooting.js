@@ -18,7 +18,7 @@ export default class Shooting {
         bullet.beginFill(0x0000ff, 1)
         bullet.drawCircle(0, 0, this.bulletRadius)
         bullet.endFill()
-        let angle = this.player.player.rotation
+        let angle = this.player.player.rotation - Math.PI / 2
         bullet.velocity = new Victor(Math.cos(angle), Math.sin(angle)).multiplyScalar(this.bulletSpeed)
         this.bullets.push(bullet)
         this.app.stage.addChild(bullet)

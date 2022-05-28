@@ -9,11 +9,13 @@ export default class Zombie {
         const radius = 32
         this.speed = 2
         this.zombie = new PIXI.Graphics()
+        // this.zombie = new PIXI.Sprite.from('./sprites/bad-shrimp.png')
         let r = this.randomSpawnPoint()
         this.zombie.position.set(r.x, r.y)
         this.zombie.beginFill(0xff0000, 1)
         this.zombie.drawCircle(0, 0, radius)
         this.zombie.endFill()
+
         app.stage.addChild(this.zombie)
     }
 
