@@ -6,7 +6,7 @@ export default class Shooting {
     constructor({ app, player }) {
         this.app = app
         this.player = player
-        this.bulletSpeed = 5
+        this.bulletSpeed = 7
         this.bullets = []
         this.bulletRadius = 8
         this.maxBullets = 5

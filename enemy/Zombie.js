@@ -31,6 +31,14 @@ export default class Zombie {
         this.zombie.position.set(this.zombie.position.x + v.x, this.zombie.position.y + v.y)
     }
 
+    get position() {
+        return this.zombie.position
+    }
+
+    kill() {
+        this.app.stage.removeChild(this.zombie)
+    }
+
     randomSpawnPoint = () => {
         const edge = Math.floor(Math.random() * 4) //Integer Random [0,3]
         let canvasSize = this.app.screen.width
