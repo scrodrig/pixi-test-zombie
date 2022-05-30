@@ -6,16 +6,14 @@ export default class Zombie {
     constructor({ app, player }) {
         this.app = app
         this.player = player
-        const radius = 32
+        const radius = 50
         this.speed = 2
-        this.zombie = new PIXI.Graphics()
-        // this.zombie = new PIXI.Sprite.from('./sprites/bad-shrimp.png')
+        this.texture = PIXI.Texture.from('../sprites/bad-shrimp.png')
+        this.zombie = new PIXI.Sprite.from(this.texture)
         let r = this.randomSpawnPoint()
         this.zombie.position.set(r.x, r.y)
-        this.zombie.beginFill(0xff0000, 1)
-        this.zombie.drawCircle(0, 0, radius)
-        this.zombie.endFill()
-
+        this.zombie.height = 50
+        this.zombie.width = 50
         app.stage.addChild(this.zombie)
     }
 

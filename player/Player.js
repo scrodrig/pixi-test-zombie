@@ -5,12 +5,14 @@ import Shooting from './Shooting'
 export default class Player {
     constructor({ app }) {
         this.app = app
-        let playerWidth = 64
-        this.player = new PIXI.Sprite(PIXI.Texture.WHITE)
+        let playerWidth = 100
+        // this.player = new PIXI.Sprite(PIXI.Texture.WHITE)
+        this.texture = PIXI.Texture.from('../sprites/iquatic.png')
+        this.player = new PIXI.Sprite.from(this.texture)
         this.player.anchor.set(0.5)
         this.player.position.set(app.screen.width / 2, app.screen.height / 2)
         this.player.width = this.player.height = playerWidth
-        this.player.tint = 0xea985d
+        // this.player.tint = 0xea985d
         app.stage.addChild(this.player)
         this.lastMouseButton = 0
         this.shooting = new Shooting({ app, player: this })

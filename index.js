@@ -24,7 +24,7 @@ app.ticker.add(delta => {
         bullets: player.shooting.bullets,
         zombies: zSpawner.spawns,
         bulletRadius: player.shooting.bulletRadius,
-        zombieRadius: 32
+        zombieRadius: 50
     })
 })
 
