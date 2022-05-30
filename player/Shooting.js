@@ -8,7 +8,7 @@ export default class Shooting {
         this.player = player
         this.bulletSpeed = 7
         this.bullets = []
-        this.bulletRadius = 8
+        this.bulletRadius = 4
         this.maxBullets = 5
     }
 
@@ -46,6 +46,10 @@ export default class Shooting {
         } else {
             clearInterval(this.interval)
         }
+    }
+
+    killBullet(bullet) {
+        this.app.stage.removeChild(bullet)
     }
 
     update() {

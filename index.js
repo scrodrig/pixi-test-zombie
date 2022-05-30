@@ -10,7 +10,7 @@ const app = new PIXI.Application({
     view: canvas,
     width: canvasSize,
     height: canvasSize,
-    backgroundColor: 0x5c812f
+    backgroundColor: 0x348fa3
 })
 
 let player = new Player({ app })
@@ -29,14 +29,17 @@ app.ticker.add(delta => {
 })
 
 function bulletHitTest({ bullets, zombies, bulletRadius, zombieRadius }) {
-    bullets.forEach(bullet => {
-        zombies.forEach((zombie, index) => {
+    bullets.forEach((bullet, bIndex) => {
+        zombies.forEach((zombie, zIndex) => {
             let dx = zombie.position.x - bullet.position.x
             let dy = zombie.position.y - bullet.position.y
             let distance = Math.sqrt(dx * dx + dy * dy)
             if (distance < bulletRadius + zombieRadius) {
-                zombies.splice(index, 1)
+                zombies.splice(zIndex, 1)
                 zombie.kill()
+                //Kill bullet
+                bullets.splice(bIndex, 1)
+                player.shooting.killBullet(bullet)
             }
         })
     })
