@@ -42,10 +42,6 @@ export default class Player {
         if(this.health <= 0){
             this.dead = true
         }
-        console.log('this.health', this.health)
-        console.log('this.maxHealth', this.maxHealth)
-        console.log('this.health.initialWidth', this.healthBar.initialWidth)
-        console.log('this.healthBar.width', this.healthBar.width)
     }
 
     get width() {
@@ -57,6 +53,7 @@ export default class Player {
     }
 
     update() {
+        if(this.dead) return
         const mouse = this.app.renderer.plugins.interaction.mouse
 
         const cursorPosition = mouse.global
