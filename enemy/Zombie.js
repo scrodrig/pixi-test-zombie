@@ -60,7 +60,7 @@ export default class Zombie {
     levelUp() {
         console.log(this.speed, this.scoringPoint)
         this.speed += this.speed * 0.1
-        this.scoringPoint += 1
+        this.scoringPoint += Math.floor(0.5 * this.app.level)
         this.attackInterval -= 20
         this.decrementPoint += Math.floor(0.5 * this.app.level)
     }
