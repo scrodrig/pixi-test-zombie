@@ -15,14 +15,18 @@ const app = new PIXI.Application({
 
 let player = new Player({ app })
 let zSpawner = new Spawner({ app, create: () => new Zombie({ app, player }) })
-
+let score = 0
+let scoreText = new PIXI.Text(`SCORE: ${score}`)
 let gameStartScene = createScene('<< Click to Start >>')
 let gameOverScene = createScene('Game Over!!')
+let scoreScene = createScoreScene(scoreText)
 app.gameStarted = false
 
 app.ticker.add(delta => {
     gameOverScene.visible = player.dead
     gameStartScene.visible = !app.gameStarted
+    scoreScene.visible = true
+    // scoreScene.
     if (app.gameStarted === false) return
     player.update(delta)
     if (!player.dead) {
@@ -48,6 +52,10 @@ function bulletHitTest({ bullets, zombies, bulletRadius, zombieRadius }) {
                 //Kill bullet
                 bullets.splice(bIndex, 1)
                 player.shooting.killBullet(bullet)
+
+                score += 10
+                scoreText.text = `SCORE: ${score}`
+                console.log(score)
             }
         })
     })
@@ -60,6 +68,18 @@ function createScene(sceneText) {
     text.x = app.screen.width / 2
     text.y = app.screen.height / 3
     text.anchor.set(0.5, 0)
+    sceneContainer.zIndex = 1
+    sceneContainer.addChild(text)
+    app.stage.addChild(sceneContainer)
+    return sceneContainer
+}
+
+function createScoreScene(text) {
+    const margin = {x: 60, y: 20}
+    const sceneContainer = new PIXI.Container()
+    text.style = { fontFamily: 'Arial', fontSize: 24, fill: 0xffffff, align: 'center' }
+    text.x = app.screen.width - text.width - margin.x
+    text.y = margin.y
     sceneContainer.zIndex = 1
     sceneContainer.addChild(text)
     app.stage.addChild(sceneContainer)
