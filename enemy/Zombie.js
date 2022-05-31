@@ -69,10 +69,13 @@ export default class Zombie {
     }
 
     loadTexture(spawnPointX) {
+        const pick = Math.floor(Math.random() * 3) //Integer Random [0,2]
+        const natiolnalities = ['us', 'ec', 'sgr']
+        const nationality = natiolnalities[pick]
         if (spawnPointX <= this.app.screen.width / 2) {
-            this.texture = PIXI.Texture.from('../sprites/bad-shrimp.png')
+            this.texture = PIXI.Texture.from(`../sprites/bad-shrimp-${nationality}.png`)
         } else {
-            this.texture = PIXI.Texture.from('../sprites/bad-shrimp-mirror.png')
+            this.texture = PIXI.Texture.from(`../sprites/bad-shrimp-${nationality}-mirror.png`)
         }
     }
 
