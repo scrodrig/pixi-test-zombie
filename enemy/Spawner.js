@@ -1,8 +1,9 @@
 export default class Spawner {
-    constructor({ app, create }) {
+    constructor({ app, create, level }) {
         this.app = app
         this.spawnInterval = 1000
         this.maxSpawns = 10
+        this.level = level
         this.create = create
         this.spawns = []
         setInterval(() => this.spawn(), this.spawnInterval)
@@ -10,7 +11,7 @@ export default class Spawner {
 
     levelUp() {
         this.maxSpawns += 2
-        this.spawnInterval -= 50
+        setInterval(() => this.spawn(), this.spawnInterval * this.level * 2)
     }
 
     spawn() {

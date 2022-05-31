@@ -35,7 +35,7 @@ export default class Score {
     }
 
     levelUp() {
-        if (!this.app.leveledUp && this.score >= this.app.level * 100) {
+        if (!this.app.leveledUp && this.score >= this.app.level * 200) {
             this.app.leveledUp = true
             sound.add('my-sound', '../sounds/levelup.mp3')
             sound.play('my-sound')

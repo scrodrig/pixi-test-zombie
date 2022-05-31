@@ -10,13 +10,13 @@ export default class Zombie {
         this.score = score
         this.speed = 2 + 0.3 * this.app.level
         this.scoringPoint = 4 + this.app.level
-        this.decrementPoint = 1 + this.app.level
+        this.decrementPoint = 1 + Math.floor(0.5 * this.app.level)
         let r = this.randomSpawnPoint()
         this.zombie = new PIXI.Sprite.from(this.texture)
         this.zombie.position.set(r.x, r.y)
         this.zombie.height = 50
         this.zombie.width = 50
-        this.attackInterval = 500 + 0.2 * this.app.level
+        this.attackInterval = 500 - 0.2 * this.app.level
         app.stage.addChild(this.zombie)
     }
 
@@ -49,6 +49,9 @@ export default class Zombie {
     }
 
     kill() {
+        sound.add('scream', '../sounds/ouch.mp3')
+        sound.play('scream')
+        sound.volume('scream', 0.25)
         this.app.stage.removeChild(this.zombie)
         this.stopAttacking()
     }
@@ -58,7 +61,7 @@ export default class Zombie {
         this.speed += this.speed * 0.1
         this.scoringPoint += 1
         this.attackInterval -= 20
-        this.decrementPoint -= 1
+        this.decrementPoint += Math.floor(0.5 * this.app.level)
     }
 
     stopAttacking() {

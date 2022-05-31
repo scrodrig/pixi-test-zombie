@@ -4,6 +4,7 @@ import Player from './player/Player'
 import Score from './game/Score'
 import Spawner from './enemy/Spawner'
 import Zombie from './enemy/Zombie'
+import { sound } from '@pixi/sound'
 
 let canvasSize = 900
 const canvas = document.getElementById('mycanvas')
@@ -18,19 +19,31 @@ app.gameStarted = false
 app.leveledUp = false
 app.level = 1
 
-app.levelSpawnerUp = ()=>{
+app.levelSpawnerUp = () => {
     zSpawner.levelUp()
 }
 
 let player = new Player({ app })
 let score = new Score({ app })
-let zSpawner = new Spawner({ app, create: () => new Zombie({ app, player, score, level: app.level }) })
+let zSpawner = new Spawner({
+    app,
+    create: () => new Zombie({ app, player, score, level: app.level }),
+    level: app.level
+})
 
 let gameStartScene = createScene('<< Click to Start >>')
 let gameOverScene = createScene('Game Over!!')
 let levelUpScene = createScene('Level Up!!')
 let scoreScene = score.createScene()
 let levelScene = score.createLevelScene()
+
+sound.add('music', './sounds/music.mp3')
+if(!player.dead){
+    sound.play('music', {
+        loop: true,
+        volume: 0.30
+    })
+}
 
 app.ticker.add(delta => {
     gameOverScene.visible = player.dead
@@ -46,6 +59,7 @@ app.ticker.add(delta => {
     }
     //Stop attacking when player is dead
     if (player.dead) {
+        sound.stop('music')
         zSpawner.spawns.forEach(zombie => zombie.stopAttacking())
     }
 
