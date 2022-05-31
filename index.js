@@ -16,7 +16,7 @@ const app = new PIXI.Application({
 let player = new Player({ app })
 let zSpawner = new Spawner({ app, create: () => new Zombie({ app, player }) })
 
-let gameStartScene = createScene('Click to Start')
+let gameStartScene = createScene('<< Click to Start >>')
 let gameOverScene = createScene('Game Over!!')
 app.gameStarted = false
 
@@ -56,8 +56,9 @@ function bulletHitTest({ bullets, zombies, bulletRadius, zombieRadius }) {
 function createScene(sceneText) {
     const sceneContainer = new PIXI.Container()
     const text = new PIXI.Text(sceneText)
+    text.style = { fontFamily: 'Arial', fontSize: 50, fill: 0xffffff, align: 'center' }
     text.x = app.screen.width / 2
-    text.y = 0
+    text.y = app.screen.height / 3
     text.anchor.set(0.5, 0)
     sceneContainer.zIndex = 1
     sceneContainer.addChild(text)
