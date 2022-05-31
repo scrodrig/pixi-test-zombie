@@ -9,7 +9,7 @@ export default class Zombie {
         this.player = player
         this.score = score
         this.speed = 2 + 0.3 * this.app.level
-        this.scoringPoint = 4 + this.app.level
+        this.scoringPoint = 4 + Math.floor(0.2 * this.app.level)
         this.decrementPoint = 1 + Math.floor(0.5 * this.app.level)
         let r = this.randomSpawnPoint()
         this.zombie = new PIXI.Sprite.from(this.texture)
@@ -60,7 +60,7 @@ export default class Zombie {
     levelUp() {
         console.log(this.speed, this.scoringPoint)
         this.speed += this.speed * 0.1
-        this.scoringPoint += Math.floor(0.5 * this.app.level)
+        this.scoringPoint += Math.floor(0.2 * this.app.level)
         this.attackInterval -= 20
         this.decrementPoint += Math.floor(0.5 * this.app.level)
     }

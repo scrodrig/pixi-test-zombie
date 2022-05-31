@@ -31,7 +31,7 @@ let zSpawner = new Spawner({
     level: app.level
 })
 
-let gameStartScene = createScene('<< CLICK TO START >>')
+let gameStartScene = createScene('CLICK TO START')
 let gameOverScene = createScene('GAME OVER!!')
 let levelUpScene = createScene('LEVEL UP!!', 0x32a84)
 let scoreScene = score.createScene()
