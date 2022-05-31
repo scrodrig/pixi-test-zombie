@@ -1,5 +1,7 @@
 import * as PIXI from 'pixi.js'
 
+import { sound } from '@pixi/sound'
+
 export default class Score {
     constructor({ app }) {
         this.app = app
@@ -35,6 +37,8 @@ export default class Score {
     levelUp() {
         if (!this.app.leveledUp && this.score >= this.app.level * 100) {
             this.app.leveledUp = true
+            sound.add('my-sound', '../sounds/levelup.mp3')
+            sound.play('my-sound')
             setTimeout(() => {
                 this.app.leveledUp = false
                 this.app.levelSpawnerUp()

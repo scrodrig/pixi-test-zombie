@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 
 import Shooting from './Shooting'
+import { sound } from '@pixi/sound'
 
 export default class Player {
     constructor({ app }) {
@@ -40,6 +41,10 @@ export default class Player {
         this.health -= 1
         this.healthBar.width = (this.health / this.maxHealth) * this.healthBar.initialWidth
         if(this.health <= 0){
+            // sound.add('applause','../sounds/applause.mp3')
+            // sound.play('applause')
+            sound.add('death','../sounds/death.mp3')
+            sound.play('death')
             this.dead = true
         }
     }

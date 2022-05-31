@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 
 import Victor from 'victor'
+import { sound } from '@pixi/sound'
 
 export default class Zombie {
     constructor({ app, player, score }) {
@@ -25,6 +26,9 @@ export default class Zombie {
         this.interval = setInterval(() => {
             this.player.attack()
             this.score.scoreDown(this.decrementPoint)
+            sound.add('hit', '../sounds/hit.mp3')
+            sound.play('hit')
+            sound.volume('hit', 0.15)
         }, this.attackInterval)
     }
 
