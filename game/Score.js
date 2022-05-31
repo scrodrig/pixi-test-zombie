@@ -12,7 +12,7 @@ export default class Score {
     createScene() {
         const margin = { x: 60, y: 20 }
         const sceneContainer = new PIXI.Container()
-        this.text.style = { fontFamily: 'Arial', fontSize: 24, fill: 0xffffff, align: 'center' }
+        this.text.style = { fontFamily: 'papyrus', fontSize: 24, fill: 0xffffff, align: 'center' }
         this.text.x = this.app.screen.width - this.text.width - margin.x
         this.text.y = margin.y
         sceneContainer.zIndex = 1
@@ -25,7 +25,7 @@ export default class Score {
         const margin = { x: 60, y: 20 }
         this.levelText = new PIXI.Text(`LEVEL: ${this.app.level}`)
         const sceneContainer = new PIXI.Container()
-        this.levelText.style = { fontFamily: 'Arial', fontSize: 24, fill: 0xffffff, align: 'center' }
+        this.levelText.style = { fontFamily: 'papyrus', fontSize: 24, fill: 0xffffff, align: 'center' }
         this.levelText.x = this.levelText.width - margin.x
         this.levelText.y = margin.y
         sceneContainer.zIndex = 1
