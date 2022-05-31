@@ -14,20 +14,32 @@ const app = new PIXI.Application({
     backgroundColor: 0x348fa3
 })
 
+app.gameStarted = false
+app.leveledUp = false
+app.level = 1
+
+app.levelSpawnerUp = ()=>{
+    zSpawner.levelUp()
+}
+
 let player = new Player({ app })
 let score = new Score({ app })
-let zSpawner = new Spawner({ app, create: () => new Zombie({ app, player, score }) })
+let zSpawner = new Spawner({ app, create: () => new Zombie({ app, player, score, level: app.level }) })
 
 let gameStartScene = createScene('<< Click to Start >>')
 let gameOverScene = createScene('Game Over!!')
+let levelUpScene = createScene('Level Up!!')
 let scoreScene = score.createScene()
-app.gameStarted = false
+let levelScene = score.createLevelScene()
 
 app.ticker.add(delta => {
     gameOverScene.visible = player.dead
     gameStartScene.visible = !app.gameStarted
     scoreScene.visible = true
+    levelScene.visible = true
+    levelUpScene.visible = !player.dead && app.leveledUp
     if (app.gameStarted === false) return
+    score.levelUp()
     player.update(delta)
     if (!player.dead) {
         zSpawner.spawns.forEach(zombie => zombie.update(delta))
@@ -36,6 +48,7 @@ app.ticker.add(delta => {
     if (player.dead) {
         zSpawner.spawns.forEach(zombie => zombie.stopAttacking())
     }
+
     bulletHitTest({
         bullets: player.shooting.bullets,
         zombies: zSpawner.spawns,
@@ -57,7 +70,7 @@ function bulletHitTest({ bullets, zombies, bulletRadius, zombieRadius }) {
                 bullets.splice(bIndex, 1)
                 player.shooting.killBullet(bullet)
                 //scoring
-                score.scoreUp()
+                score.scoreUp(zombie.scoringPoint)
             }
         })
     })
