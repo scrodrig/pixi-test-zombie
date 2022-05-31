@@ -6,7 +6,7 @@
 
 body {
   margin-top: 50px;
-  font-family: sans-serif;
+  font-family: papyrus;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -19,7 +19,7 @@ body {
   max-width: 300px;
   margin: auto;
   text-align: center;
-  font-family: arial;
+  font-family: papyrus;
 }
 
 .price {

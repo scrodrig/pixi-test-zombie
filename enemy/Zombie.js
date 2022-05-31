@@ -14,6 +14,7 @@ export default class Zombie {
         let r = this.randomSpawnPoint()
         this.zombie = new PIXI.Sprite.from(this.texture)
         this.zombie.position.set(r.x, r.y)
+        this.zombie.anchor.set(0.5)
         this.zombie.height = 50
         this.zombie.width = 50
         this.attackInterval = 500 - 0.2 * this.app.level
