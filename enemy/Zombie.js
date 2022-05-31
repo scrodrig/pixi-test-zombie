@@ -23,7 +23,7 @@ export default class Zombie {
         this.interval = setInterval(()=>this.player.attack(), 500)
     }
 
-    update() {
+    update(delta) {
         let e = new Victor(this.zombie.position.x, this.zombie.position.y)
         let s = new Victor(this.player.position.x, this.player.position.y)
         if (e.distance(s) < this.player.width / 2) {
@@ -33,7 +33,7 @@ export default class Zombie {
             return
         }
         let d = s.subtract(e)
-        let v = d.normalize().multiplyScalar(this.speed)
+        let v = d.normalize().multiplyScalar(this.speed * delta)
         this.zombie.position.set(this.zombie.position.x + v.x, this.zombie.position.y + v.y)
     }
 

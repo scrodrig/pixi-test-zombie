@@ -52,7 +52,7 @@ export default class Player {
         return this.player.position
     }
 
-    update() {
+    update(delta) {
         if(this.dead) return
         const mouse = this.app.renderer.plugins.interaction.mouse
 
@@ -66,6 +66,6 @@ export default class Player {
             this.shooting.shoot = mouse.buttons !== 0
             this.lastMouseButton = mouse.buttons
         }
-        this.shooting.update()
+        this.shooting.update(delta)
     }
 }

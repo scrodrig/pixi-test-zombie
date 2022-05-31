@@ -24,9 +24,9 @@ app.ticker.add(delta => {
     gameOverScene.visible = player.dead
     gameStartScene.visible = !app.gameStarted
     if (app.gameStarted === false) return
-    player.update()
+    player.update(delta)
     if (!player.dead) {
-        zSpawner.spawns.forEach(zombie => zombie.update())
+        zSpawner.spawns.forEach(zombie => zombie.update(delta))
     }
     bulletHitTest({
         bullets: player.shooting.bullets,

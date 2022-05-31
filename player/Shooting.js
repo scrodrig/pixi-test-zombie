@@ -27,7 +27,6 @@ export default class Shooting {
 
         this.bullets.forEach(b => this.app.stage.addChild(b))
 
-
         const bullet = new PIXI.Graphics()
         bullet.position.set(this.player.position.x, this.player.position.y)
         bullet.beginFill(0x0000ff, 1)
@@ -52,9 +51,9 @@ export default class Shooting {
         this.app.stage.removeChild(bullet)
     }
 
-    update() {
+    update(delta) {
         this.bullets.forEach(b => {
-            b.position.set(b.position.x + b.velocity.x, b.position.y + b.velocity.y)
+            b.position.set(b.position.x + b.velocity.x * delta, b.position.y + b.velocity.y * delta)
         })
     }
 }
