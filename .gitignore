@@ -3,3 +3,13 @@ build
 npm-debug.log
 .env
 .vscode/
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+bower_components
+
+.firebase
+# End of https://www.toptal.com/developers/gitignore/api/react
