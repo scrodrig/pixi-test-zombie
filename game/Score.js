@@ -19,8 +19,14 @@ export default class Score {
         return sceneContainer
     }
 
-    scoreUp(increment = 5){
+    scoreUp(increment = 5) {
         this.score += increment
+        this.text.text = `SCORE: ${this.score}`
+    }
+
+    scoreDown(decrement = 1) {
+        if (this.score <= 0) return
+        this.score -= decrement
         this.text.text = `SCORE: ${this.score}`
     }
 }

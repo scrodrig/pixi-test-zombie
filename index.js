@@ -15,8 +15,8 @@ const app = new PIXI.Application({
 })
 
 let player = new Player({ app })
-let zSpawner = new Spawner({ app, create: () => new Zombie({ app, player }) })
 let score = new Score({ app })
+let zSpawner = new Spawner({ app, create: () => new Zombie({ app, player, score }) })
 
 let gameStartScene = createScene('<< Click to Start >>')
 let gameOverScene = createScene('Game Over!!')
@@ -31,6 +31,10 @@ app.ticker.add(delta => {
     player.update(delta)
     if (!player.dead) {
         zSpawner.spawns.forEach(zombie => zombie.update(delta))
+    }
+    //Stop attacking when player is dead
+    if (player.dead) {
+        zSpawner.spawns.forEach(zombie => zombie.stopAttacking())
     }
     bulletHitTest({
         bullets: player.shooting.bullets,
@@ -52,7 +56,6 @@ function bulletHitTest({ bullets, zombies, bulletRadius, zombieRadius }) {
                 //Kill bullet
                 bullets.splice(bIndex, 1)
                 player.shooting.killBullet(bullet)
-
                 //scoring
                 score.scoreUp()
             }
