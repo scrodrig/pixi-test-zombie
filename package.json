@@ -14,6 +14,7 @@
     "snowpack": "^3.0.11"
   },
   "dependencies": {
+    "@pixi/sound": "^4.2.0",
     "matter-js": "^0.15.0",
     "pixi.js": "^5.3.7",
     "victor": "^1.1.0"

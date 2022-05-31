@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 
 import Victor from 'victor'
+import { sound } from '@pixi/sound'
 
 export default class Shooting {
     constructor({ app, player }) {
@@ -35,6 +36,8 @@ export default class Shooting {
         let angle = this.player.player.rotation - Math.PI / 2
         bullet.velocity = new Victor(Math.cos(angle), Math.sin(angle)).multiplyScalar(this.bulletSpeed)
         this.bullets.push(bullet)
+        sound.add('my-sound','../sounds/boing.mp3')
+        sound.play('my-sound')
         this.app.stage.addChild(bullet)
     }
 
