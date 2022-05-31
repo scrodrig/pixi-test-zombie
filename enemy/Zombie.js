@@ -15,8 +15,8 @@ export default class Zombie {
         this.zombie = new PIXI.Sprite.from(this.texture)
         this.zombie.position.set(r.x, r.y)
         this.zombie.anchor.set(0.5)
-        this.zombie.height = 40
-        this.zombie.width = 40
+        this.zombie.height = 35
+        this.zombie.width = 35
         this.attackInterval = 500 - 0.2 * this.app.level
         app.stage.addChild(this.zombie)
     }
