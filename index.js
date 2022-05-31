@@ -6,7 +6,7 @@ import Spawner from './enemy/Spawner'
 import Zombie from './enemy/Zombie'
 import { sound } from '@pixi/sound'
 
-let canvasSize = 900
+let canvasSize = 650
 const canvas = document.getElementById('mycanvas')
 const app = new PIXI.Application({
     view: canvas,

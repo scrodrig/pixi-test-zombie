@@ -6,7 +6,7 @@ import { sound } from '@pixi/sound'
 export default class Player {
     constructor({ app }) {
         this.app = app
-        let playerWidth = 100
+        let playerWidth = 75
         // this.player = new PIXI.Sprite(PIXI.Texture.WHITE)
         this.texture = PIXI.Texture.from('../sprites/iquatic.png')
         this.player = new PIXI.Sprite.from(this.texture)
@@ -41,8 +41,6 @@ export default class Player {
         this.health -= 1
         this.healthBar.width = (this.health / this.maxHealth) * this.healthBar.initialWidth
         if(this.health <= 0){
-            // sound.add('applause','../sounds/applause.mp3')
-            // sound.play('applause')
             sound.add('death','../sounds/death.mp3')
             sound.play('death')
             this.dead = true
