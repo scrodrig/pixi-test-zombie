@@ -6,3 +6,6 @@ Spike for Pixijs
 
 
 <img width="1287" alt="Screen Shot 2022-05-31 at 09 56 34" src="https://user-images.githubusercontent.com/5466692/171224686-e24b246c-be20-438b-aa4e-511fd951f92b.png">
+
+
+<img width="1913" alt="Screen Shot 2022-05-31 at 15 15 09" src="https://user-images.githubusercontent.com/5466692/171310882-8bcfd321-a5e7-41e1-8228-669c9db6177d.png">
